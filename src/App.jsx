@@ -1,37 +1,56 @@
 import React from "react";
-import movies from "./mockData.js";
+import data from "./mockData.js";
 import Search from "./Search.jsx";
+import { useState } from "react";
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchInput: ''
-        }
-        this.handleChange = this.handleChange.bind(this);
-    }
+const App = () => {
+    const [movies, setMovies] = useState(data);
+    const [searchInput, setSearchInput] = useState('');
 
-    handleChange() {
+    const listOfMovies = movies.map(movie => <li key={movies.indexOf(movie)}>{movie.title}</li>);
 
-    }
+    console.log(searchInput);
 
-    render() {
-        let list = []
-
-        for (let i = 0; i < movies.length; i++) {
-            let movie = movies[i].title
-
-            list.push(<li>{movie}</li>);
-        }
-
-        return (
-            <div>
-                <Search input={this.state.searchInput}/>
-                <ul>{list}</ul>
-            </div>
-            
-        );
-    }
+    return (
+        <div>
+            <Search 
+                setSearchInput={setSearchInput}
+            />
+            <ul>{listOfMovies}</ul>
+        </div>
+    );
 }
 
+
 export default App;
+
+
+// class App extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             searchInput: ''
+//         }
+//         this.handleChange = this.handleChange.bind(this);
+//     }
+
+//     handleChange(event) {
+//         console.log('Poopies', event);
+//     }
+
+//     render() {
+//         let list = movies.map(movie => <li key={movies.indexOf(movie)}>{movie.title}</li>)
+
+
+//         return (
+//             <div>
+//                 <Search 
+//                     input={this.state.searchInput}
+//                     onChange={this.handleChange}
+//                 />
+//                 <ul>{list}</ul>
+//             </div>
+            
+//         );
+//     }
+// }

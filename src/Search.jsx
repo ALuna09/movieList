@@ -1,11 +1,17 @@
 import React from "react";
 
 const Search =  (props) => {
-    console.log('Testies', props);
+    const {searchInput, setSearchInput} = props;
+    // console.log(setSearchInput);
     return (
-        <div>
-            <input type="text">{props.searchInput}</input>
-        </div>
+        <form>
+            <input 
+            type="text"
+            placeholder="Search"
+            onChange={e => setSearchInput(e.target.value)}
+            >
+            </input>
+        </form>
     )
 }
 
