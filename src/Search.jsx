@@ -1,8 +1,8 @@
 import React from "react";
 
 const Search =  (props) => {
-    const {searchInput, setSearchInput} = props;
-    // console.log(setSearchInput);
+    const { setSearchInput } = props;
+
     return (
         <form>
             <input 
