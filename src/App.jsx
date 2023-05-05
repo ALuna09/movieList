@@ -7,24 +7,15 @@ import { useState } from "react";
 const App = () => {
     const [searchInput, setSearchInput] = useState('');
     const [movies, setMovies] = useState(data);
-    const [filteredMovies, setFilteredMovies] = useState(movies);
-
-    const movieFilter = (searchInput) => {
-        const listOfFilteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchInput.toLowerCase()));
-
-        console.log('filtered', listOfFilteredMovies);
-        setFilteredMovies(listOfFilteredMovies);
-    }
 
     return (
         <div>
             <Search 
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
-                movieFilter={movieFilter}
             />
             <Movies 
-                movies={filteredMovies}
+                movies={movies.filter(movie => movie.title.toLowerCase().includes(searchInput.toLowerCase()))}
             />
         </div>
     );

@@ -3,25 +3,21 @@ import React from "react";
 const Search =  (props) => {
     const { 
         searchInput,
-        setSearchInput,
-        movieFilter
+        setSearchInput
     } = props;
 
     // console.log('Search Input: ', searchInput , '\nFiltered Movies:', filteredMovies)
 
     return (
-        <form>
+        <form
+            onSubmit={e => e.preventDefault(e)}
+        >
             <input 
                 type="text"
                 placeholder="Search"
+                value={searchInput}
                 onChange={e => setSearchInput(e.target.value)}
             >
-            </input>
-            <input
-                type="button"
-                onClick={movieFilter(searchInput)}
-            >
-                Search
             </input>
         </form>
     )
