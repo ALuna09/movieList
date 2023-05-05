@@ -10,13 +10,10 @@ const App = () => {
     const [filteredMovies, setFilteredMovies] = useState(movies);
 
     const movieFilter = (searchInput) => {
-        setFilteredMovies(movies.filter(movie => {
-            let title = movie.title.toLowerCase();
-            let lowerCaseSearch = searchInput.toLowerCase();
+        const listOfFilteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchInput.toLowerCase()));
 
-            title.includes(lowerCaseSearch);
-            
-        }))  
+        console.log('filtered', listOfFilteredMovies);
+        setFilteredMovies(listOfFilteredMovies);
     }
 
     return (
@@ -24,7 +21,7 @@ const App = () => {
             <Search 
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
-                onChange={() => movieFilter(searchInput)}
+                movieFilter={movieFilter}
             />
             <Movies 
                 movies={filteredMovies}
