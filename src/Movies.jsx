@@ -1,11 +1,27 @@
-import React from 'react';
-
 const Movies = (props) => {
-    let {movies} = props;
+    let {movies, setMovies, filteredMovies, setFilteredMovies} = props;
+
+    const handleClick = (movie) => {
+        movie.watched = !movie.watched;
+        movie.watched ? movie.watchStatus = 'Watched' : movie.watchStatus = 'To Watch'
+        setFilteredMovies(filteredMovies);
+    }
     
-    return movies.length ? (
+
+    return filteredMovies.length ? (
         <ul>
-            {movies.map(movie => <li key={movies.indexOf(movie)}>{movie.title}</li>)}
+            {filteredMovies.map(movie => {
+                return (
+                    <li key={filteredMovies.indexOf(movie)}>
+                        {movie.title}
+                        <button
+                            onClick={() => handleClick(movie)}
+                        >
+                            {movie.watchStatus}
+                        </button>
+                    </li>
+                )
+            })}
         </ul>
     ) : (
         <h1>
@@ -15,8 +31,3 @@ const Movies = (props) => {
 }
 
 export default Movies;
-// return (
-//     <ul>
-//         {movies.map(movie => <li key={movies.indexOf(movie)}>{movie.title}</li>)}
-//     </ul>
-// );
