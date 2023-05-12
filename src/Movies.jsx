@@ -1,12 +1,11 @@
 const Movies = (props) => {
-    let {movies, setMovies, filteredMovies, setFilteredMovies} = props;
+    const {filteredMovies, setFilteredMovies} = props;
 
     const handleClick = (movie) => {
         movie.watched = !movie.watched;
         movie.watched ? movie.watchStatus = 'Watched' : movie.watchStatus = 'To Watch'
-        setFilteredMovies(filteredMovies);
+        setFilteredMovies([...filteredMovies]);
     }
-    
 
     return filteredMovies.length ? (
         <ul>
