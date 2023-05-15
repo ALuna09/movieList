@@ -1,5 +1,3 @@
-import MovieItem from "./MovieItem";
-
 const Movies = (props) => {
     const {filteredMovies, setFilteredMovies} = props;
 
@@ -9,18 +7,20 @@ const Movies = (props) => {
         setFilteredMovies([...filteredMovies]);
     }
 
-    const handleDoubleClick = (movie) => {
-        movie.expanded = !movie.expanded
-        setFilteredMovies([...filteredMovies])
-    }
-
     return filteredMovies.length ? (
         <ul>
-            <MovieItem 
-                filteredMovies={filteredMovies}
-                onDoubleClick={handleDoubleClick}
-                handleClick={handleClick}
-            />
+            {filteredMovies.map(movie => {
+                return (
+                    <li key={filteredMovies.indexOf(movie)}>
+                        {movie.title}
+                        <button
+                            onClick={() => handleClick(movie)}
+                        >
+                            {movie.watchStatus}
+                        </button>
+                    </li>
+                )
+            })}
         </ul>
     ) : (
         <h1>

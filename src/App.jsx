@@ -2,21 +2,13 @@ import React from "react";
 import Search from "./Search.jsx";
 import AddMovie from "./AddMovie.jsx";
 import Movies from "./Movies.jsx";
-import data from "./mockData.js";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const App = () => {
     const [searchInput, setSearchInput] = useState('');
-    const [movies, setMovies] = useState(data);
+    const [movies, setMovies] = useState([]);
     const [addMovie, setAddMovie] = useState('');
     const [filteredMovies, setFilteredMovies] = useState(movies);
-
-    useEffect(() => {
-        const api_key = process.env.API_KEY;
-        console.log(process.env.API_KEY);
-        console.log(api_key);
-    }, []);
 
     let watchToggleSetting = 'all';
 
