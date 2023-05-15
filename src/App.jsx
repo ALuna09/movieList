@@ -8,7 +8,10 @@ const App = () => {
     const [searchInput, setSearchInput] = useState('');
     const [movies, setMovies] = useState([]);
     const [addMovie, setAddMovie] = useState('');
-    const [filteredMovies, setFilteredMovies] = useState(movies);
+    //TODO Possibly get rid of filteredMovies?
+    const [filteredMovies, setFilteredMovies] = useState(movies); //? Truly needed?
+    console.log('movies', movies);
+    console.log('filtered', filteredMovies);
 
     let watchToggleSetting = 'all';
 
@@ -33,6 +36,10 @@ const App = () => {
     }
 
     const watchFilter = () => {
+        setFilteredMovies(movies);
+        //TODO See if you can use movies alone to filter
+
+        //! Dis shit is clearly broken
         if (watchToggleSetting === 'watched') {
             setFilteredMovies(movies.filter(movie => movie.watched))
         } else if (watchToggleSetting === 'to watch') {
@@ -40,6 +47,9 @@ const App = () => {
         } else {
             setFilteredMovies(movies);
         }
+
+        //TODO Hopefully implement search functionality
+        
     }
 
     return (
@@ -56,22 +66,24 @@ const App = () => {
                 setFilteredMovies={setFilteredMovies}
             />
             <button
-                onClick={() => watchToggle('watched')}
+                onClick={() => {watchToggle('watched');}}
             >
                 Watched
             </button>
             <button
-                onClick={() => watchToggle('to watch')}
+                onClick={() => { watchToggle('to watch');}}
             >
                 To Watch
             </button>
             <button
-                onClick={() => watchToggle('all')}
+                onClick={() => {watchToggle('all');}}
             >
                 Show All
             </button>
             <Movies 
-                filteredMovies={filteredMovies.filter(movie => movie.title.toLowerCase().includes(searchInput.toLowerCase()))}
+                movies={filteredMovies}
+                setMovies={setFilteredMovies}
+                filteredMovies={filteredMovies}
                 setFilteredMovies={setFilteredMovies}
             />
         </div>
