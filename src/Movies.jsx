@@ -11,7 +11,6 @@ const Movies = (props) => {
 
     const handleDoubleClick = (movie) => {
         movie.expanded = !movie.expanded;
-        console.log(movie)
         setFilteredMovies([...filteredMovies]);
     }
 
