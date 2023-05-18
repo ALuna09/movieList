@@ -7,6 +7,12 @@ const Movies = (props) => {
         setFilteredMovies([...filteredMovies]);
     }
 
+    const handleDoubleClick = (movie) => {
+        movie.expanded = !movie.expanded;
+        console.log(movie)
+        setFilteredMovies([...filteredMovies]);
+    }
+
     return filteredMovies.length ? (
         <ul>
             {filteredMovies.map(movie => {
