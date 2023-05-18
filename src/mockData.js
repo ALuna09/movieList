@@ -1,18 +1,43 @@
 var movies = [
     {
-        title: 'Mean Girls'
+        id: 0,
+        title: 'Mean Girls',
+        watched: true,
+        watchStatus: 'Watched',
+        expanded: false,
+        overview: ''
     },
     {
-        title: 'Hackers'
+        id: 1,
+        title: 'Hackers',
+        watched: false,
+        watchStatus: 'To Watch',
+        expanded: false,
+        overview: ''
     },
     {
-        title: 'The Grey'
+        id: 2,
+        title: 'The Grey',
+        watched: false,
+        watchStatus: 'To Watch',
+        expanded: false,
+        overview: ''
     },
     {
-        title: 'Sunshine'
+        id: 3,
+        title: 'Sunshine',
+        watched: false,
+        watchStatus: 'To Watch',
+        expanded: false,
+        overview: ''
     },
     {
-        title: 'Ex Machina'
+        id: 4,
+        title: 'Ex Machina',
+        watched: false,
+        watchStatus: 'To Watch',
+        expanded: false,
+        overview: ''
     },
 ];
 

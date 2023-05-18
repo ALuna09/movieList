@@ -7,7 +7,9 @@ const AddMovie = (props) => {
         id: movies.length,
         title: addMovie,
         watched: false,
-        watchStatus: 'To Watch'
+        watchStatus: 'To Watch',
+        expanded: false,
+        overview: ''
     };
 
     return (
