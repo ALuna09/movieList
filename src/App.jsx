@@ -2,8 +2,6 @@ import React from "react";
 import Search from "./Search.jsx";
 import AddMovie from "./AddMovie.jsx";
 import Movies from "./Movies.jsx";
-import data from "./mockData.js";
-import axios from "axios";
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -13,13 +11,11 @@ const App = () => {
     const [filteredMovies, setFilteredMovies] = useState(movies);
     
     useEffect(() => {
-        const apiKey = process.env.REACT_APP_API_KEY;
-        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
-
-        fetch(url)
+        fetch('http://localhost:4000/api/movies')
             .then(response => response.json())
             .then(data => {
-                const moviesFromAPI = data.results;
+                // console.log(data)
+                const moviesFromAPI = data;
                 let newMovieSet = moviesFromAPI.map(movie => {
                     return {
                         id: moviesFromAPI.indexOf(movie),
@@ -95,33 +91,3 @@ const App = () => {
 
 
 export default App;
-
-// movies.filter(movie => movie.title.toLowerCase().includes(searchInput.toLowerCase()))
-// count++;
-// console.log('poop');
-
-// async function getMovies() {
-//     try {
-//         const response = await axios.get(url);
-//         // console.log(response);
-//         const moviesFromAPI = response.data.results;
-//         let newMovieSet = moviesFromAPI.map(movie => {
-//             // console.log(movie)
-//             return {
-//                 id: moviesFromAPI.indexOf(movie),
-//                 title: movie.title,
-//                 watched: false,
-//                 watchStatus: 'To Watch',
-//                 expanded: false,
-//                 overview: movie.overview
-//             }
-//         })
-//         setMovies(newMovieSet);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// }
-
-// getMovies();
-
-// console.log(count)
